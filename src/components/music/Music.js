@@ -39,7 +39,6 @@ const Music = () => {
       setSongs(songList);
     });
     return () => unsubscribe();
-    
   }, [authUser]);
 
   const [toggleState, setToggleState] = useState("0");
@@ -47,7 +46,6 @@ const Music = () => {
   const toggleTab = (index) => {
     setToggleState(index);
   };
-  const collectionRef = authUser ? collection(db, `${auth.currentUser.uid}`) : null;
 
   return authUser ? (
     <section className="album__container container grid">
