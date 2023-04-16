@@ -32,6 +32,7 @@ const Music = () => {
 
   useEffect(() => {
     if (!authUser) return;
+    const collectionRef = collection(db, `${authUser.uid}`);
     const querySongs = query(collectionRef, orderBy("createdAt", "asc"));
     const unsubscribe = onSnapshot(querySongs, (snapshot) => {
       let songList = [];
@@ -41,6 +42,7 @@ const Music = () => {
       setSongs(songList);
     });
     return () => unsubscribe();
+    
   }, [authUser]);
 
   const [toggleState, setToggleState] = useState("0");

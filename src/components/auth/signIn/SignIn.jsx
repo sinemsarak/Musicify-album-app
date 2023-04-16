@@ -80,6 +80,8 @@ const SignIn = () => {
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
+      console.log(errorMessage),
+      console.log(errorCode),
       alertify.error('This mail is already registered');
     }
     setSignUpEmail("");
