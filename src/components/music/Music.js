@@ -27,9 +27,6 @@ const Music = () => {
 
   const [songs, setSongs] = useState([]);
 
-  let collectionRef = null;
-  if (authUser) collectionRef = collection(db, `${auth.currentUser.uid}`);
-
   useEffect(() => {
     if (!authUser) return;
     const collectionRef = collection(db, `${authUser.uid}`);
@@ -50,6 +47,7 @@ const Music = () => {
   const toggleTab = (index) => {
     setToggleState(index);
   };
+  const collectionRef = authUser ? collection(db, `${auth.currentUser.uid}`) : null;
 
   return authUser ? (
     <section className="album__container container grid">
